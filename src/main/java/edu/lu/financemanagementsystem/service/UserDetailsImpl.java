@@ -32,9 +32,9 @@ public class UserDetailsImpl implements UserDetails {
         List<GrantedAuthority> authorities = Collections.emptyList();
 
         return new UserDetailsImpl(
-                user.id,
-                user.email,
-                user.password,
+                user.getId(),
+                user.getEmail(),
+                user.getPassword(),
                 authorities);
     }
 

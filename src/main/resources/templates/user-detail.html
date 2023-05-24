@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+    <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+    <div>
+        <span>Email: </span>
+        <span th:text="${user.email}"></span>
+    </div>
+    <div>
+        <span>First name: </span>
+        <span th:text="${user.firstName}"></span>
+    </div>
+    <div>
+        <span>Last name: </span>
+        <span th:text="${user.lastName}"></span>
+    </div>
+    <hr />
+    <div>
+        <span>Created at: </span>
+        <span th:text="${user.createdAt}"></span>
+    </div>
+    <div>
+        <span>Updated at: </span>
+        <span th:text="${user.createdAt}"></span>
+    </div>
+</div>
+</body>
+</html>

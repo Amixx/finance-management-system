@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<input autocomplete="off" type="hidden" th:field="*{id}">
+
+<label for="firstName">First Name:</label><br>
+<input autocomplete="off" type="text" id="firstName" th:field="*{firstName}" placeholder="First name"><br>
+
+<label for="lastName">Last Name:</label><br>
+<input autocomplete="off" type="text" id="lastName" th:field="*{lastName}" placeholder="Last name"><br>
+
+<label for="email">Email:</label><br>
+<input autocomplete="off" type="email" id="email" th:field="*{email}" placeholder="Email"><br>
+
+<label for="password">Password:</label><br>
+<input autocomplete="off" type="password" id="password" th:field="*{password}" placeholder="Password"><br>
+</body>
+</html>

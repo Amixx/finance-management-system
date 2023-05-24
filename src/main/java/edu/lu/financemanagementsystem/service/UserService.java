@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        user.password = (passwordEncoder.encode(user.password));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -36,7 +36,7 @@ public class UserService {
     public void deleteUser(Long id) {
         User user = getUserById(id);
         if (user != null) {
-            user.isDeleted = true;
+            user.setDeleted(true);
             userRepository.save(user);
         }
     }

@@ -33,7 +33,7 @@ public class DatabaseLoader implements CommandLineRunner {
             user.setLastName("Bānis");
             user.setEmail(email);
             user.setPassword(passwordEncoder.encode("secret"));
-            user.isDeleted = false;
+            user.setDeleted(false);
             user.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
             user.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
 
