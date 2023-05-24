@@ -4,29 +4,42 @@
     <title>Users</title>
 </head>
 <body>
-<div>
-    <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
-    <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
-    <div>
-        <span>Email: </span>
-        <span th:text="${user.email}"></span>
-    </div>
-    <div>
-        <span>First name: </span>
-        <span th:text="${user.firstName}"></span>
-    </div>
-    <div>
-        <span>Last name: </span>
-        <span th:text="${user.lastName}"></span>
-    </div>
-    <hr />
-    <div>
-        <span>Created at: </span>
-        <span th:text="${user.createdAt}"></span>
-    </div>
-    <div>
-        <span>Updated at: </span>
-        <span th:text="${user.createdAt}"></span>
+
+<header th:replace="fragments/header"></header>
+
+<div class="container m-auto p-4">
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">
+                <span>Email: </span>
+                <span th:text="${user.email}"></span>
+            </h2>
+            <div>
+                <span>First name: </span>
+                <span th:text="${user.firstName}"></span>
+            </div>
+            <div>
+                <span>Last name: </span>
+                <span th:text="${user.lastName}"></span>
+            </div>
+            <hr />
+            <div>
+                <span>Created at: </span>
+                <td th:text="${#dates.format(user.updatedAt, 'dd MMM yyyy')}"></td>
+            </div>
+            <div>
+                <span>Updated at: </span>
+                <td th:text="${#dates.format(user.updatedAt, 'dd MMM yyyy')}"></td>
+            </div>
+            <div class="card-actions justify-end">
+                <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-outline btn-sm btn-accent">
+                    <i icon-name="edit"></i>
+                </a>
+                <a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-outline btn-sm btn-primary">
+                    <i icon-name="trash-2"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </body>

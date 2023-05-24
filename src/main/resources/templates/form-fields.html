@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<input autocomplete="off" type="hidden" th:field="*{id}">
 
-<label for="firstName">First Name:</label><br>
-<input autocomplete="off" type="text" id="firstName" th:field="*{firstName}" placeholder="First name"><br>
-
-<label for="lastName">Last Name:</label><br>
-<input autocomplete="off" type="text" id="lastName" th:field="*{lastName}" placeholder="Last name"><br>
-
-<label for="email">Email:</label><br>
-<input autocomplete="off" type="email" id="email" th:field="*{email}" placeholder="Email"><br>
-
-<label for="password">Password:</label><br>
-<input autocomplete="off" type="password" id="password" th:field="*{password}" placeholder="Password"><br>
+<div class="flex gap-4 flex-wrap">
+    <input autocomplete="off" type="hidden" th:field="*{id}">
+    <input
+            type="text"
+            class="input input-bordered w-full max-w-xs"
+            id="firstName"
+            th:field="*{firstName}"
+            placeholder="First name"
+    />
+    <input
+            type="text"
+            class="input input-bordered w-full max-w-xs"
+            id="lastName"
+            th:field="*{lastName}"
+            placeholder="Last name"
+    />
+    <input
+            type="email"
+            class="input input-bordered w-full max-w-xs"
+            id="email"
+            th:field="*{email}"
+            placeholder="Email"
+    />
+    <input
+            type="password"
+            class="input input-bordered w-full max-w-xs"
+            id="password"
+            th:field="*{password}"
+            placeholder="Password"
+    />
+</div>
 </body>
 </html>

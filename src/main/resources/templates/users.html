@@ -4,31 +4,51 @@
     <title>Users</title>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Email</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.firstName}"></td>
-        <td th:text="${user.lastName}"></td>
-        <td th:text="${user.createdAt}"></td>
-        <td th:text="${user.updatedAt}"></td>
-        <td>
-            <a th:href="@{/users/{id}(id=${user.id})}">View</a>
-            <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
-            <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+<header th:replace="fragments/header"></header>
+
+<div class="container m-auto">
+    <div class="overflow-x-auto p-4">
+        <div class="flex justify-end mb-2">
+            <a th:href="@{/users/new}" class="btn btn-outline btn-primary">
+                <i icon-name="plus"></i>
+            </a>
+        </div>
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${#dates.format(user.createdAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(user.updatedAt, 'dd MMM yyyy')}"></td>
+                <td>
+                    <div class="flex gap-3">
+                        <a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-outline btn-sm btn-primary">
+                            <i icon-name="eye"></i>
+                        </a>
+                        <a th:href="@{/users/edit/{id}(id=${user.id})}" class="btn btn-outline btn-sm btn-accent">
+                            <i icon-name="edit"></i>
+                        </a>
+                        <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-outline btn-sm btn-error">
+                            <i icon-name="trash-2"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
