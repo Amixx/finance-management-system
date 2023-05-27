@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="/css/output.css">
+    <link href="/css/output.css" rel="stylesheet">
     <!-- Development version -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!-- Production version -->
@@ -18,7 +18,7 @@
                 <a th:href="@{/users}">Users</a>
             </li>
             <li>
-                <a>Kaut kas cits</a>
+                <a th:href="@{/stores}">Stores</a>
             </li>
         </ul>
     </div>

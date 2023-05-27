@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Stores</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container m-auto">
+    <div class="overflow-x-auto p-4">
+        <div class="flex justify-between mb-2">
+            <h1 class="text-4xl">Stores</h1>
+            <div th:replace="~{fragments/button :: actionButton('stores', 'new', '')}"></div>
+        </div>
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="store : ${stores}">
+                <td th:text="${store.name}"></td>
+                <td th:text="${#dates.format(store.createdAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(store.updatedAt, 'dd MMM yyyy')}"></td>
+                <td>
+                    <div class="flex gap-3">
+                        <div th:replace="~{fragments/button :: actionButton('stores', 'view', ${store.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('stores', 'edit', ${store.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('stores', 'delete', ${store.id})}"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

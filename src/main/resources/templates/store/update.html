@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Update User</title>
+    <title>Update Store</title>
     <meta charset="UTF-8"/>
 </head>
 <body>
@@ -10,9 +10,9 @@
 
 <div class="container mx-auto">
     <div class="p-4">
-        <h1 class="text-2xl mb-2">Update user</h1>
-        <form method="post" th:action="@{/users/add}" th:object="${user}">
-            <div th:replace="user/form-fields :: body"></div>
+        <h1 class="text-2xl mb-2">Update store</h1>
+        <form method="post" th:action="@{/stores/add}" th:object="${store}">
+            <div th:replace="store/form-fields :: body"></div>
             <button class="btn btn-primary btn-submit mt-4" type="submit">Update</button>
         </form>
     </div>

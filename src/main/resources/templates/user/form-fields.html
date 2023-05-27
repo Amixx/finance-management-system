@@ -3,34 +3,34 @@
 <body>
 
 <div class="flex gap-4 flex-wrap">
-    <input autocomplete="off" type="hidden" th:field="*{id}">
+    <input autocomplete="off" th:field="*{id}" type="hidden">
     <input
-            type="text"
             class="input input-bordered w-full max-w-xs"
             id="firstName"
-            th:field="*{firstName}"
             placeholder="First name"
+            th:field="*{firstName}"
+            type="text"
     />
     <input
-            type="text"
             class="input input-bordered w-full max-w-xs"
             id="lastName"
-            th:field="*{lastName}"
             placeholder="Last name"
+            th:field="*{lastName}"
+            type="text"
     />
     <input
-            type="email"
             class="input input-bordered w-full max-w-xs"
             id="email"
-            th:field="*{email}"
             placeholder="Email"
+            th:field="*{email}"
+            type="email"
     />
     <input
-            type="password"
             class="input input-bordered w-full max-w-xs"
             id="password"
-            th:field="*{password}"
             placeholder="Password"
+            th:field="*{password}"
+            type="password"
     />
 </div>
 </body>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="flex gap-4 flex-wrap">
+    <input autocomplete="off" th:field="*{id}" type="hidden">
+    <input
+            class="input input-bordered w-full max-w-xs"
+            id="name"
+            placeholder="Name"
+            th:field="*{name}"
+            type="text"
+    />
+</div>
+</body>
+</html>
