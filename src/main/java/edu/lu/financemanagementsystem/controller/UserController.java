@@ -2,7 +2,6 @@ package edu.lu.financemanagementsystem.controller;
 
 import edu.lu.financemanagementsystem.model.User;
 import edu.lu.financemanagementsystem.repository.UserRepository;
-import edu.lu.financemanagementsystem.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,14 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
     @Autowired
     private UserRepository userRepository;
 

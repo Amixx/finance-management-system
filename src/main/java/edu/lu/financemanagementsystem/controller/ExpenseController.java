@@ -2,7 +2,6 @@ package edu.lu.financemanagementsystem.controller;
 
 import edu.lu.financemanagementsystem.model.Expense;
 import edu.lu.financemanagementsystem.repository.ExpenseRepository;
-import edu.lu.financemanagementsystem.service.ExpenseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/expenses")
 public class ExpenseController {
 
-    @Autowired
-    private ExpenseService expenseService;
     @Autowired
     private ExpenseRepository expenseRepository;
 

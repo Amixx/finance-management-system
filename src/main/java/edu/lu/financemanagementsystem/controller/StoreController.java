@@ -2,7 +2,6 @@ package edu.lu.financemanagementsystem.controller;
 
 import edu.lu.financemanagementsystem.model.Store;
 import edu.lu.financemanagementsystem.repository.StoreRepository;
-import edu.lu.financemanagementsystem.service.StoreService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/stores")
 public class StoreController {
 
-    @Autowired
-    private StoreService storeService;
     @Autowired
     private StoreRepository storeRepository;
 
