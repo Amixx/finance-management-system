@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="actionButton(resource, action, id)">
+    <a th:href="@{'/' + ${resource} + '/' + ${action == 'view' ? '' : action} + ${id != null && id != '' ? '/' + id : ''}}" class="btn btn-outline btn-sm"
+       th:classappend="${action == 'new' ? 'btn-primary' :
+                            action == 'view' ? 'btn-primary' :
+                            action == 'edit' ? 'btn-accent' :
+                            action == 'delete' ? 'btn-error' : ''}">
+        <i th:attr="icon-name=${action == 'new' ? 'plus' :
+                            action == 'view' ? 'eye' :
+                            action == 'edit' ? 'edit' :
+                            action == 'delete' ? 'trash-2' : ''}"></i>
+    </a>
+</div>
+
+</body>
+</html>

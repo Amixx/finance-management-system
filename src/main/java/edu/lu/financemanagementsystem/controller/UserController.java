@@ -38,7 +38,7 @@ public class UserController {
 
     @GetMapping("/new")
     public String showSignUpForm(User user) {
-        return "add-user";
+        return "user/add";
     }
 
     @PostMapping("/add")
