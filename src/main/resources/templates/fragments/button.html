@@ -3,7 +3,7 @@
 <body>
 
 <div th:fragment="actionButton(resource, action, id)">
-    <a th:href="@{'/' + ${resource} + '/' + ${action == 'view' ? '' : action} + ${id != null && id != '' ? '/' + id : ''}}" class="btn btn-outline btn-sm"
+    <a th:href="@{'/' + ${resource} + ${action == 'view' ? '' : '/' + action} + ${id != null && id != '' ? '/' + id : ''}}" class="btn btn-outline btn-sm"
        th:classappend="${action == 'new' ? 'btn-primary' :
                             action == 'view' ? 'btn-primary' :
                             action == 'edit' ? 'btn-accent' :

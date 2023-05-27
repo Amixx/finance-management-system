@@ -5,12 +5,12 @@
 </head>
 <body>
 
-<header th:replace="fragments/header"></header>
+<header th:replace="~{fragments/header}"></header>
 
 <div class="container m-auto">
     <div class="overflow-x-auto p-4">
         <div class="flex justify-end mb-2">
-            <div th:replace="fragments/button :: actionButton('users', 'new', '')"></div>
+            <div th:replace="~{fragments/button :: actionButton('users', 'new', '')}"></div>
         </div>
         <table class="table table-zebra w-full">
             <thead>
@@ -32,9 +32,9 @@
                 <td th:text="${#dates.format(user.updatedAt, 'dd MMM yyyy')}"></td>
                 <td>
                     <div class="flex gap-3">
-                        <div th:replace="fragments/button :: actionButton('users', 'view', ${user.id})"></div>
-                        <div th:replace="fragments/button :: actionButton('users', 'edit', ${user.id})"></div>
-                        <div th:replace="fragments/button :: actionButton('users', 'delete', ${user.id})"></div>
+                        <div th:replace="~{fragments/button :: actionButton('users', 'view', ${user.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('users', 'edit', ${user.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('users', 'delete', ${user.id})}"></div>
                     </div>
                 </td>
             </tr>
