@@ -26,14 +26,14 @@ public class UserController {
         Page<User> userPage = userRepository.findAll(pageable);
         model.addAttribute("users", userPage.getContent());
         model.addAttribute("currentPage", userPage.getNumber());
-        return "users";
+        return "user/index";
     }
 
     @GetMapping("/{id}")
     public String getUserById(@PathVariable Long id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
-        return "user-detail";
+        return "user/view";
     }
 
     @GetMapping("/new")
@@ -44,7 +44,7 @@ public class UserController {
     @PostMapping("/add")
     public String addUser(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "add-user";
+            return "user/add";
         }
         userRepository.save(user);
         return "redirect:/users";
@@ -54,13 +54,13 @@ public class UserController {
     public String showUpdateForm(@PathVariable Long id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
-        return "update-user";
+        return "user/update";
     }
 
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Long id, @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "update-user";
+            return "user/update";
         }
         userRepository.save(user);
         return "redirect:/users";
