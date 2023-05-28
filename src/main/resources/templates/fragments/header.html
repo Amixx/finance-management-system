@@ -15,13 +15,28 @@
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
             <li>
-                <a th:href="@{/users}">Users</a>
+                <a th:href="@{/users}">
+                    <i icon-name="user"></i>
+                    <span>Users</span>
+                </a>
             </li>
             <li>
-                <a th:href="@{/stores}">Stores</a>
+                <a th:href="@{/stores}">
+                    <span icon-name="store"></span>
+                    <span>Stores</span>
+                </a>
             </li>
             <li>
-                <a th:href="@{/expenses}">Expenses</a>
+                <a th:href="@{/expenses}">
+                    <span icon-name="wallet"></span>
+                    <span>Expenses</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/expense-categories}">
+                    <span icon-name="folder-tree"></span>
+                    <span>Expense categories</span>
+                </a>
             </li>
         </ul>
     </div>

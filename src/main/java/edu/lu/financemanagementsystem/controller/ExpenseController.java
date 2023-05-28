@@ -2,6 +2,7 @@ package edu.lu.financemanagementsystem.controller;
 
 import edu.lu.financemanagementsystem.model.Expense;
 import edu.lu.financemanagementsystem.model.User;
+import edu.lu.financemanagementsystem.repository.ExpenseCategoryRepository;
 import edu.lu.financemanagementsystem.repository.ExpenseRepository;
 import edu.lu.financemanagementsystem.repository.StoreRepository;
 import edu.lu.financemanagementsystem.repository.UserRepository;
@@ -23,6 +24,8 @@ public class ExpenseController {
 
     @Autowired
     private ExpenseRepository expenseRepository;
+    @Autowired
+    private ExpenseCategoryRepository expenseCategoryRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -57,6 +60,11 @@ public class ExpenseController {
         var userStores = storeRepository.findAllByUserId(currentUserId);
         model.addAttribute("userStores", userStores);
 
+        var expenseCategories = expenseCategoryRepository.findAllByAuthorIdIsNull();
+        var userExpenseCategories = expenseCategoryRepository.findAllByAuthorId(currentUserId);
+        expenseCategories.addAll(userExpenseCategories);
+        model.addAttribute("expenseCategories", expenseCategories);
+
         return "expense/add";
     }
 
@@ -78,13 +86,18 @@ public class ExpenseController {
     public String showUpdateForm(@PathVariable Long id, Model model) throws Exception {
         Expense expense = expenseRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid expense Id:" + id));
         model.addAttribute("expense", expense);
-        
+
         String currentUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         var currentUserId = userRepository.findByEmail(currentUserEmail).map(User::getId).orElse(null);
         if (currentUserId == null) throw new Exception("User not found");
 
         var userStores = storeRepository.findAllByUserId(currentUserId);
         model.addAttribute("userStores", userStores);
+
+        var expenseCategories = expenseCategoryRepository.findAllByAuthorIdIsNull();
+        var userExpenseCategories = expenseCategoryRepository.findAllByAuthorId(currentUserId);
+        expenseCategories.addAll(userExpenseCategories);
+        model.addAttribute("expenseCategories", expenseCategories);
 
         return "expense/update";
     }

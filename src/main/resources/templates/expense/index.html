@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Amount</th>
+                <th>Category</th>
                 <th>Expense date</th>
                 <th>Created at</th>
                 <th>Updated at</th>
@@ -30,6 +31,11 @@
                 <td th:text="${expense.title}"></td>
                 <td class="max-w-[200px] whitespace-normal" th:text="${expense.description}"></td>
                 <td th:text="${expense.amount}"></td>
+                <td>
+                    <span class="mr-2 py-[1px] px-[10.5px] rounded-full"
+                          th:style="'background-color: ' + ${expense.expenseCategory.color}"></span>
+                    <span th:text="${expense.expenseCategory.title}"></span>
+                </td>
                 <td th:text="${expense.expenseDate}"></td>
                 <td th:text="${#dates.format(expense.createdAt, 'dd MMM yyyy')}"></td>
                 <td th:text="${#dates.format(expense.updatedAt, 'dd MMM yyyy')}"></td>

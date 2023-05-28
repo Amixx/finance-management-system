@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Store</title>
+    <title>Add Expense Category</title>
     <meta charset="UTF-8"/>
 </head>
 <body>
@@ -10,9 +10,9 @@
 
 <div class="container mx-auto">
     <div class="p-4">
-        <h1 class="text-2xl mb-2">Add New Store</h1>
-        <form method="post" th:action="@{/stores/add}" th:object="${store}">
-            <div th:replace="~{store/form-fields :: body}"></div>
+        <h1 class="text-2xl mb-2">Add New Expense Category</h1>
+        <form method="post" th:action="@{/expense-categories/add}" th:object="${expenseCategory}">
+            <div th:replace="~{expense-category/form-fields :: body}"></div>
             <button class="btn btn-primary btn-submit mt-4" type="submit">Create</button>
         </form>
     </div>

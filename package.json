@@ -6,7 +6,7 @@
   "author": "Imants Liepiņš <imants.liepins@whitedigital.eu>",
   "license": "MIT",
   "scripts": {
-    "build-css": "npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch"
+    "build-css": "npx tailwindcss -i ./src/main/resources/static/css/main.css -o ./src/main/resources/static/css/output.css --watch"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",

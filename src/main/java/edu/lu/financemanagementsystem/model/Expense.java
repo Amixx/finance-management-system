@@ -10,7 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "expenses")
 public class Expense {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +19,9 @@ public class Expense {
 
     @Column(name = "store_id", nullable = false)
     private Long storeId;
+
+    @Column(name = "expense_category_id", nullable = false)
+    private Long expenseCategoryId;
 
     @Column(nullable = false)
     private String title;
@@ -38,13 +40,16 @@ public class Expense {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private Date createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private Date updatedAt;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "expense_category_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private ExpenseCategory expenseCategory;
 
     public Long getId() {
         return id;
@@ -124,5 +129,21 @@ public class Expense {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Long getExpenseCategoryId() {
+        return expenseCategoryId;
+    }
+
+    public void setExpenseCategoryId(Long expenseCategoryId) {
+        this.expenseCategoryId = expenseCategoryId;
+    }
+
+    public ExpenseCategory getExpenseCategory() {
+        return expenseCategory;
+    }
+
+    public void setExpenseCategory(ExpenseCategory expenseCategory) {
+        this.expenseCategory = expenseCategory;
     }
 }

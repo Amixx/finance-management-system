@@ -4,6 +4,10 @@
 
 <div class="flex gap-4 flex-wrap">
     <input autocomplete="off" th:field="*{id}" type="hidden">
+    <input autocomplete="off" th:field="*{createdAt}" type="hidden">
+    <input autocomplete="off" th:field="*{userId}" type="hidden">
+    <input autocomplete="off" th:field="*{storeId}" type="hidden">
+    <input autocomplete="off" th:field="*{expenseCategoryId}" type="hidden">
     <input
             class="input input-bordered w-full max-w-xs"
             id="title"
@@ -33,6 +37,14 @@
     />
     <select class="input input-bordered w-full max-w-xs" id="store" th:field="*{storeId}">
         <option th:each="store : ${userStores}" th:text="${store.name}" th:value="${store.id}"></option>
+    </select>
+    <select class="input input-bordered w-full max-w-xs" id="expenseCategory" th:field="*{expenseCategoryId}">
+        <option
+                th:data-bg="${expenseCategory.id}"
+                th:each="expenseCategory : ${expenseCategories}"
+                th:text="${expenseCategory.title}"
+                th:value="${expenseCategory.id}">
+        </option>
     </select>
 </div>
 </body>
