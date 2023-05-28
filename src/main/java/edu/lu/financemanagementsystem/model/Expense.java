@@ -32,6 +32,9 @@ public class Expense {
     @Column(nullable = false)
     private Long amount;
 
+    @Column(name = "frequency")
+    private String frequency;
+
     @Column(name = "expense_date")
     private LocalDateTime expenseDate;
 
@@ -145,5 +148,13 @@ public class Expense {
 
     public void setExpenseCategory(ExpenseCategory expenseCategory) {
         this.expenseCategory = expenseCategory;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
     }
 }

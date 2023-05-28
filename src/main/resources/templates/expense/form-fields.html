@@ -34,6 +34,12 @@
     <select class="input input-bordered w-full max-w-xs" id="store" th:field="*{storeId}">
         <option th:each="store : ${userStores}" th:text="${store.name}" th:value="${store.id}"></option>
     </select>
+    <select class="input input-bordered w-full max-w-xs" id="frequency" th:field="*{frequency}">
+        <option value="SINGLE_TIME">once</option>
+        <option value="WEEKLY">weekly</option>
+        <option value="MONTHLY">monthly</option>
+        <option value="YEARLY">yearly</option>
+    </select>
     <select class="input input-bordered w-full max-w-xs" id="expenseCategory" th:field="*{expenseCategoryId}">
         <option
                 th:data-bg="${expenseCategory.id}"
