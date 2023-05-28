@@ -20,6 +20,7 @@
                 <th>Description</th>
                 <th>Amount</th>
                 <th>Category</th>
+                <th>Frequency</th>
                 <th>Expense date</th>
                 <th>Created at</th>
                 <th>Updated at</th>
@@ -36,6 +37,7 @@
                           th:style="'background-color: ' + ${expense.expenseCategory.color}"></span>
                     <span th:text="${expense.expenseCategory.title}"></span>
                 </td>
+                <td th:text="${expense.frequency}"></td>
                 <td th:text="${expense.expenseDate}"></td>
                 <td th:text="${#dates.format(expense.createdAt, 'dd MMM yyyy')}"></td>
                 <td th:text="${#dates.format(expense.updatedAt, 'dd MMM yyyy')}"></td>

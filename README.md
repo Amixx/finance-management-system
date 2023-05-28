@@ -15,3 +15,5 @@
 Tailwindcss docs: https://tailwindcss.com/docs/installation
 DaisyUI docs: https://daisyui.com/components/button/
 Lucide icon docs: https://lucide.dev/
+
+Link to design description: https://drive.google.com/file/d/13XpB62MZs24bM8kBV0eHArlw_nunI0xk/view 
