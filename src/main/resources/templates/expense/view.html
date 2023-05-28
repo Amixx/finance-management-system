@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Expense</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container m-auto p-4">
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">
+                <span>Title: </span>
+                <span th:text="${expense.title}"></span>
+            </h2>
+            <div>
+                <span>Description: </span>
+                <span th:text="${expense.description}"></span>
+            </div>
+            <div>
+                <span>Amount: </span>
+                <span th:text="${expense.amount}"></span>
+            </div>
+            <div>
+                <span>Expense date: </span>
+                <span th:text="${expense.expenseDate}"></span>
+            </div>
+            <hr/>
+            <div>
+                <span>Created at: </span>
+                <td th:text="${#dates.format(expense.updatedAt, 'dd MMM yyyy')}"></td>
+            </div>
+            <div>
+                <span>Updated at: </span>
+                <td th:text="${#dates.format(expense.updatedAt, 'dd MMM yyyy')}"></td>
+            </div>
+            <div class="card-actions justify-end">
+                <a class="btn btn-outline btn-sm btn-accent" th:href="@{/expenses/edit/{id}(id=${expense.id})}">
+                    <i icon-name="edit"></i>
+                </a>
+                <a class="btn btn-outline btn-sm btn-primary" th:href="@{/expenses/{id}(id=${expense.id})}">
+                    <i icon-name="trash-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

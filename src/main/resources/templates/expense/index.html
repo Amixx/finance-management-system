@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expenses</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container m-auto">
+    <div class="overflow-x-auto p-4">
+        <div class="flex justify-between mb-2">
+            <h1 class="text-4xl">Expenses</h1>
+            <div th:replace="~{fragments/button :: actionButton('expenses', 'new', '')}"></div>
+        </div>
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Expense date</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="expense : ${expenses}">
+                <td th:text="${expense.title}"></td>
+                <td class="max-w-[200px] whitespace-normal" th:text="${expense.description}"></td>
+                <td th:text="${expense.amount}"></td>
+                <td th:text="${expense.expenseDate}"></td>
+                <td th:text="${#dates.format(expense.createdAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(expense.updatedAt, 'dd MMM yyyy')}"></td>
+                <td>
+                    <div class="flex gap-3">
+                        <div th:replace="~{fragments/button :: actionButton('expenses', 'view', ${expense.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('expenses', 'edit', ${expense.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('expenses', 'delete', ${expense.id})}"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

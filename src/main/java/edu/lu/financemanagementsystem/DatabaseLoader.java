@@ -38,10 +38,10 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) {
         var user = loadUsers();
-        var store = loadStores();
-        if (user.isPresent() && store.isPresent()) {
-            loadExpenses(user.get(), store.get());
-        }
+        if (user.isEmpty()) return;
+        var store = loadStores(user.get());
+        if (store.isEmpty()) return;
+        loadExpenses(user.get(), store.get());
     }
 
     private Optional<User> loadUsers() {
@@ -66,11 +66,12 @@ public class DatabaseLoader implements CommandLineRunner {
         return this.userRepository.findByEmail(email);
     }
 
-    private Optional<Store> loadStores() {
+    private Optional<Store> loadStores(User user) {
         String name = "Rimi Mols";
 
         if (this.storeRepository.findByName(name).isEmpty()) {
             var store = new Store();
+            store.setUserId(user.getId());
             store.setName(name);
             store.setDeleted(false);
             store.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
@@ -87,9 +88,11 @@ public class DatabaseLoader implements CommandLineRunner {
         expense1.setUserId(user.getId());
         expense1.setStoreId(store.getId());
         expense1.setTitle("Test expense");
-        expense1.setDescription("Test expense description");
+        expense1.setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                "Sed non risus. Suspendisse lectus tortor, dignissim sit amet, " +
+                "adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. ");
         expense1.setAmount(100L);
-        expense1.setExpense_date(LocalDateTime.now());
+        expense1.setExpenseDate(LocalDateTime.now());
         expense1.setDeleted(false);
         expense1.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
         expense1.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
@@ -98,9 +101,8 @@ public class DatabaseLoader implements CommandLineRunner {
         expense2.setUserId(user.getId());
         expense2.setStoreId(store.getId());
         expense2.setTitle("Test expense 2");
-        expense2.setDescription("Test expense description 2");
         expense2.setAmount(50L);
-        expense2.setExpense_date(LocalDateTime.now());
+        expense2.setExpenseDate(LocalDateTime.now());
         expense2.setDeleted(false);
         expense2.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
         expense2.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));

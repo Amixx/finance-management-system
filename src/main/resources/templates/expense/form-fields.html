@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="flex gap-4 flex-wrap">
+    <input autocomplete="off" th:field="*{id}" type="hidden">
+    <input
+            class="input input-bordered w-full max-w-xs"
+            id="title"
+            placeholder="Title"
+            th:field="*{title}"
+            type="text"
+    />
+    <textarea
+            class="input input-bordered w-full max-w-xs"
+            id="description"
+            placeholder="Description"
+            th:field="*{description}"
+    ></textarea>
+    <input
+            class="input input-bordered w-full max-w-xs"
+            id="amount"
+            placeholder="Amount"
+            th:field="*{amount}"
+            type="text"
+    />
+    <input
+            class="input input-bordered w-full max-w-xs"
+            id="expense-date"
+            placeholder="Expense date"
+            th:field="*{expenseDate}"
+            type="datetime-local"
+    />
+    <select class="input input-bordered w-full max-w-xs" id="store" th:field="*{storeId}">
+        <option th:each="store : ${userStores}" th:text="${store.name}" th:value="${store.id}"></option>
+    </select>
+</div>
+</body>
+</html>

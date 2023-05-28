@@ -56,10 +56,11 @@ public class StoreController {
         if (result.hasErrors()) {
             return "store/add";
         }
-        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-        var currentUserId = userRepository.findByEmail(currentUserName).map(User::getId).orElse(null);
+        String currentUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        var currentUserId = userRepository.findByEmail(currentUserEmail).map(User::getId).orElse(null);
         if (currentUserId == null) throw new Exception("User not found");
         store.setUserId(currentUserId);
+        
         storeRepository.save(store);
         return "redirect:/stores";
     }

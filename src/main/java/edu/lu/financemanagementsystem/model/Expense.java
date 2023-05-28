@@ -15,11 +15,11 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(nullable = false)
-    private Long storeId; // TODO: probably needs to be changed so it relates to expense category instead
+    @Column(name = "store_id", nullable = false)
+    private Long storeId;
 
     @Column(nullable = false)
     private String title;
@@ -30,8 +30,8 @@ public class Expense {
     @Column(nullable = false)
     private Long amount;
 
-    @Column
-    private LocalDateTime expense_date;
+    @Column(name = "expense_date")
+    private LocalDateTime expenseDate;
 
     @Column(name = "is_deleted", nullable = false)
     private Boolean isDeleted = false;
@@ -110,12 +110,12 @@ public class Expense {
         this.description = description;
     }
 
-    public LocalDateTime getExpense_date() {
-        return expense_date;
+    public LocalDateTime getExpenseDate() {
+        return expenseDate;
     }
 
-    public void setExpense_date(LocalDateTime expense_date) {
-        this.expense_date = expense_date;
+    public void setExpenseDate(LocalDateTime expenseDate) {
+        this.expenseDate = expenseDate;
     }
 
     public Long getUserId() {
