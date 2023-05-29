@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | FMS</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<head th:replace="~{fragments/head}"></head>
+
+<div class="container mx-auto">
+    <div class="p-4">
+        <img alt="logo" class="m-auto mb-10" height="200" src="/images/fms-logo.png" width="200"/>
+        <h1 class="text-4xl mb-4 text-center">Register</h1>
+        <form action="/register" th:object="${user}" class="m-auto" method="post" style="width:max-content">
+            <input name="_csrf" th:value="${_csrf.token}" type="hidden"/>
+            <div class="flex gap-4 flex-wrap flex-col m-auto">
+                <label for="firstName">Name</label>
+                <input
+                        class="input input-bordered w-full max-w-sm"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="First Name"
+                        type="text"
+                        th:field="*{firstName}"
+                />
+                <input
+                        class="input input-bordered w-full max-w-sm"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Last Name"
+                        type="text"
+                        th:field="*{lastName}"
+                />
+                <label for="email">Email</label>
+                <input
+                        class="input input-bordered w-full max-w-sm"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        type="email"
+                        th:field="*{email}"
+                />
+                <label for="password">Password</label>
+                <input
+                        class="input input-bordered w-full max-w-sm"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        th:field="*{password}"
+                />
+                <input
+                        class="input input-bordered w-full max-w-sm"
+                        id="passwordConfirm"
+                        name="passwordConfirm"
+                        placeholder="Matching Password"
+                        type="password"
+                        th:field="*{passwordConfirm}"
+                />
+            </div>
+            <button class="btn btn-primary btn-submit mt-4 w-full" type="submit">Register</button>
+            <!-- TODO: Move this outside form
+                 Didn't want to deal with alignment -->
+            <a th:href="@{/login}" class="inline-block mt-1">
+                <span class="hover:underline">Log in</span>
+            </a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -31,6 +31,11 @@
                 />
             </div>
             <button class="btn btn-primary btn-submit mt-4 w-full" type="submit">Log in</button>
+            <!-- TODO: Move this outside form
+                 Didn't want to deal with alignment -->
+            <a th:href="@{/register}" class="inline-block mt-1">
+                <span class="hover:underline">Register</span>
+            </a>
         </form>
     </div>
 </div>
