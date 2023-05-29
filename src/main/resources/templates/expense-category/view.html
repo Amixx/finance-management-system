@@ -11,22 +11,31 @@
     <div class="card w-96 bg-base-100 shadow-xl">
         <div class="card-body">
             <h2 class="card-title">
-                <span>Email: </span>
-                <span th:text="${store.name}"></span>
+                <span>Title: </span>
+                <span th:text="${expenseCategory.title}"></span>
             </h2>
             <div>
+                <span>Description: </span>
+                <span th:text="${expenseCategory.description}"></span>
+            </div>
+            <div>
+                <span>Color: </span>
+                <span th:text="${expenseCategory.color}"></span>
+            </div>
+            <hr/>
+            <div>
                 <span>Created at: </span>
-                <td th:text="${#dates.format(store.updatedAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(expenseCategory.updatedAt, 'dd MMM yyyy')}"></td>
             </div>
             <div>
                 <span>Updated at: </span>
-                <td th:text="${#dates.format(store.updatedAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(expenseCategory.updatedAt, 'dd MMM yyyy')}"></td>
             </div>
             <div class="card-actions justify-end">
-                <a class="btn btn-outline btn-sm btn-accent" th:href="@{/stores/edit/{id}(id=${store.id})}">
+                <a class="btn btn-outline btn-sm btn-accent" th:href="@{/expense-categories/edit/{id}(id=${expenseCategory.id})}">
                     <i icon-name="edit"></i>
                 </a>
-                <a class="btn btn-outline btn-sm btn-primary" th:href="@{/stores/{id}(id=${store.id})}">
+                <a class="btn btn-outline btn-sm btn-primary" th:href="@{/expense-categories/{id}(id=${expenseCategory.id})}">
                     <i icon-name="trash-2"></i>
                 </a>
             </div>
