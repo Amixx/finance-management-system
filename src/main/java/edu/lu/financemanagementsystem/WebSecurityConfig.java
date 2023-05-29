@@ -2,13 +2,12 @@ package edu.lu.financemanagementsystem;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -21,12 +20,25 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(authorize -> authorize
+        http.authorizeHttpRequests((authorizeHttpRequests) ->
+                authorizeHttpRequests
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/static/**").permitAll()
+                        .requestMatchers("/css/**").permitAll()
+                        .requestMatchers("/images/**").permitAll()
                         .anyRequest().authenticated()
-                )
-                .formLogin(withDefaults())
-                .logout(withDefaults());
+        ).formLogin((formLogin) -> formLogin
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .loginPage("/login")
+                .failureUrl("/login?error=true")
+                .defaultSuccessUrl("/expenses")
+                .successHandler((request, response, authentication) -> {
+                    if (authentication != null && authentication.isAuthenticated()) {
+                        response.sendRedirect("/expenses");
+                    }
+                })
+        ).logout(Customizer.withDefaults());
         return http.build();
     }
 }

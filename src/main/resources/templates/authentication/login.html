@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log in | FMS</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<head th:replace="~{fragments/head}"></head>
+
+<div class="container mx-auto">
+    <div class="p-4">
+        <img alt="logo" class="m-auto mb-10" height="200" src="/images/fms-logo.png" width="200"/>
+        <h1 class="text-4xl mb-4 text-center">Log in</h1>
+        <form action="/login" class="m-auto" method="post" style="width:max-content">
+            <input name="_csrf" th:value="${_csrf.token}" type="hidden"/>
+            <div class="flex gap-4 flex-wrap flex-col m-auto">
+                <input
+                        class="input input-bordered w-full max-w-xs"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        type="email"
+                />
+                <input
+                        class="input input-bordered w-full max-w-xs"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                />
+            </div>
+            <button class="btn btn-primary btn-submit mt-4 w-full" type="submit">Log in</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
