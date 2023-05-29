@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Income</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container m-auto">
+    <div class="overflow-x-auto p-4">
+        <div class="flex justify-between mb-2">
+            <h1 class="text-4xl">Income</h1>
+            <div th:replace="~{fragments/button :: actionButton('income', 'new', '')}"></div>
+        </div>
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Income date</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="income : ${incomes}">
+                <td th:text="${income.title}"></td>
+                <td class="max-w-[200px] whitespace-normal" th:text="${income.description}"></td>
+                <td th:text="${income.amount}"></td>
+                <td>
+                    <span class="mr-2 py-[1px] px-[10.5px] rounded-full"
+                          th:style="'background-color: ' + ${income.incomeCategory.color}"></span>
+                    <span th:text="${income.incomeCategory.title}"></span>
+                </td>
+                <td th:text="${income.incomeDate}"></td>
+                <td th:text="${#dates.format(income.createdAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(income.updatedAt, 'dd MMM yyyy')}"></td>
+                <td>
+                    <div class="flex gap-3">
+                        <div th:replace="~{fragments/button :: actionButton('income', 'view', ${income.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('income', 'edit', ${income.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('income', 'delete', ${income.id})}"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

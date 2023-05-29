@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Income Categories</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container m-auto">
+    <div class="overflow-x-auto p-4">
+        <div class="flex justify-between mb-2">
+            <h1 class="text-4xl">Income Categories</h1>
+            <div th:replace="~{fragments/button :: actionButton('income-categories', 'new', '')}"></div>
+        </div>
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <!--                <th>Icon</th>-->
+                <th>Color</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="incomeCategory : ${incomeCategories}">
+                <td th:text="${incomeCategory.title}"></td>
+                <td th:text="${incomeCategory.description}"></td>
+                <!--                <td th:text="${incomeCategory.iconName}"></td>-->
+                <td>
+                    <span class="mr-2 py-[1px] px-[10.5px] rounded-full"
+                          th:style="'background-color: ' + ${incomeCategory.color}"
+                    ></span>
+                </td>
+                <td th:text="${#dates.format(incomeCategory.createdAt, 'dd MMM yyyy')}"></td>
+                <td th:text="${#dates.format(incomeCategory.updatedAt, 'dd MMM yyyy')}"></td>
+                <td>
+                    <div class="flex gap-3">
+                        <div th:replace="~{fragments/button :: actionButton('income-categories', 'view', ${incomeCategory.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('income-categories', 'edit', ${incomeCategory.id})}"></div>
+                        <div th:replace="~{fragments/button :: actionButton('income-categories', 'delete', ${incomeCategory.id})}"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

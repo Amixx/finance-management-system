@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Income</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<header th:replace="~{fragments/header}"></header>
+
+<div class="container mx-auto">
+    <div class="p-4">
+        <h1 class="text-2xl mb-2">Add New Income</h1>
+        <form method="post" th:action="@{/income/add}" th:object="${income}">
+            <div th:replace="~{income/form-fields :: body}"></div>
+            <button class="btn btn-primary btn-submit mt-4" type="submit">Create</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
