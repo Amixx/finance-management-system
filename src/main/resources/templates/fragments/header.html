@@ -8,7 +8,7 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li>
+            <li sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/users}">
                     <i icon-name="user"></i>
                     <span>Users</span>
@@ -31,6 +31,11 @@
                     <span icon-name="folder-tree"></span>
                     <span>Expense categories</span>
                 </a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
             </li>
         </ul>
     </div>
