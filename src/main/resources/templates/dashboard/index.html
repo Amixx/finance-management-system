@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard | FMS</title>
+</head>
 
 <header th:replace="~{fragments/header}"></header>
 
 <body>
 <div>
     <h1 class="text-4xl text-center">Dashboard</h1>
-    <div class="flex justify-center mt-5">
-        <form class="space-x-4" method="get" th:action="@{/dashboard}">
-            <label for="startDate">Start Date:</label>
-            <input class="border p-1" id="startDate" name="startDate" type="date">
-            <label for="endDate">End Date:</label>
-            <input class="border p-1" id="endDate" name="endDate" type="date">
-            <input class="btn btn-primary" type="submit" value="Update">
-        </form>
-    </div>
+    <!-- DOES NOT WORK! TODO: FIX -->
+    <!--    <div class="flex justify-center mt-5">-->
+    <!--        <form class="space-x-4" method="get" th:action="@{/dashboard}">-->
+    <!--            <label for="startDate">Start Date:</label>-->
+    <!--            <input class="border p-1" id="startDate" name="startDate" type="date">-->
+    <!--            <label for="endDate">End Date:</label>-->
+    <!--            <input class="border p-1" id="endDate" name="endDate" type="date">-->
+    <!--            <input class="btn btn-primary" type="submit" value="Update">-->
+    <!--        </form>-->
+    <!--    </div>-->
 </div>
 
 <div id="chartData" th:data-expense-by-category-data="${expenseByCategoryDataJson}"></div>
@@ -37,7 +41,7 @@
         data.addRows(expenseByCategoryData);
 
         var options = {
-            title: 'Expenses by Category'
+            title: 'Expenses by Category This Month'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

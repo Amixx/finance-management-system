@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "expenses")
@@ -156,5 +157,13 @@ public class Expense {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public String getFrequencyDisplayString() {
+        if (Objects.equals(this.frequency, "SINGLE_TIME")) return "Single Time";
+        if (Objects.equals(this.frequency, "WEEKLY")) return "Weekly";
+        if (Objects.equals(this.frequency, "MONTHLY")) return "Monthly";
+        if (Objects.equals(this.frequency, "YEARLY")) return "Yearly";
+        return "";
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}"></head>
 <body>
 <div class="navbar bg-base-100">
@@ -8,16 +8,16 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li>
-                <a th:href="@{/dashboard}">
-                    <i icon-name="bar-chart-3"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
             <li sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/users}">
                     <i icon-name="user"></i>
                     <span>Users</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/dashboard}">
+                    <i icon-name="bar-chart-3"></i>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li>
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" method="post">
+                <form method="post" th:action="@{/logout}">
                     <input type="submit" value="Sign Out"/>
                 </form>
             </li>
