@@ -39,22 +39,25 @@ public class DashboardController {
     @GetMapping
     public String getDashboard(
             Model model,
-            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime startDate,
-            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime endDate
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate
     ) throws Exception {
         String currentUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         var user = userRepository.findByEmail(currentUserEmail).orElse(null);
         if (user == null) throw new Exception("User not found");
 
+        LocalDateTime startDateTime = startDate != null ? startDate.atStartOfDay() : null;
+        LocalDateTime endDateTime = endDate != null ? endDate.atTime(23, 59, 59) : null;
+
         if (startDate == null || endDate == null) {
-            startDate = LocalDateTime.now().withDayOfMonth(1);
-            endDate = LocalDateTime.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
+            startDateTime = LocalDateTime.now().withDayOfMonth(1);
+            endDateTime = LocalDateTime.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
         }
 
         List<Expense> expenses = expenseRepository.findByUserIdAndExpenseDateBetween(
                 user.getId(),
-                startDate,
-                endDate);
+                startDateTime,
+                endDateTime);
 
         Map<String, Long> expenseByCategory = expenses.stream()
                 .collect(Collectors.groupingBy(
