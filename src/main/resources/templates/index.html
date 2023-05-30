@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<div class="container min-h-screen flex flex-col">
+    <div class="navbar bg-base-100 py-5 px-6 shadow-sm">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl">Finance Management System</a>
+        </div>
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
+                <li>
+                    <a th:href="@{/login}">
+                        <span icon-name="user"></span>
+                        <span>Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/register}">
+                        <span icon-name="plus"></span>
+                        <span>Get Started</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="mt-10 px-6">
+
+        <h1 class="text-xl font-semibold mb-4 text-center text-white">Welcome to Your Personal Finance Management</h1>
+        <p class="mb-8 text-center">Our tool provides you with easy tracking of your expenses and income. It also helps you make smart budget decisions to reach your financial goals.</p>
+
+        <div class="text-center" >
+            <img alt="image" class="mx-auto" style="max-height: 500px" src="/images/income-wallpaper.webp"/>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded shadow-sm">
+                <h3 class="text-lg font-semibold mb-2 text-white">Track Your Expenses</h3>
+                <p>Manage your outgoing funds, keep track of your spending habits, and identify opportunities to save money.</p>
+            </div>
+
+            <div class="p-4 rounded shadow-sm">
+                <h3 class="text-lg font-semibold mb-2 text-white">Monitor Your Income</h3>
+                <p>Keep a close eye on your sources of income, identify patterns, and make informed decisions about your earnings.</p>
+            </div>
+
+            <div class="p-4 rounded shadow-sm">
+                <h3 class="text-lg font-semibold mb-2 text-white">Create Expense Budgets</h3>
+                <p>Set financial goals, create budgets, and stay on track to meet your financial objectives.</p>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
