@@ -35,10 +35,10 @@ public class WebSecurityConfig {
                 .passwordParameter("password")
                 .loginPage("/login")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/expenses")
+                .defaultSuccessUrl("/dashboard")
                 .successHandler((request, response, authentication) -> {
                     if (authentication != null && authentication.isAuthenticated()) {
-                        response.sendRedirect("/expenses");
+                        response.sendRedirect("/dashboard");
                     }
                 })
         ).logout(Customizer.withDefaults());
