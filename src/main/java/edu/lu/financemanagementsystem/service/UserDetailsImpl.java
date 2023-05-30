@@ -2,8 +2,10 @@ package edu.lu.financemanagementsystem.service;
 
 import edu.lu.financemanagementsystem.model.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +31,13 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public static UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = Collections.emptyList();
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        if ("admin@fms.lv".equals(user.getEmail())) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else {
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
 
         return new UserDetailsImpl(
                 user.getId(),

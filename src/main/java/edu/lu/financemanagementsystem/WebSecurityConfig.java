@@ -26,6 +26,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/login").anonymous()
                         .requestMatchers("/register").anonymous()
                         .requestMatchers("/logout").authenticated()
+                        .requestMatchers("/users").hasRole("ADMIN")
                         .requestMatchers("/static/**").permitAll()
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/images/**").permitAll()
