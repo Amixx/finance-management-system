@@ -30,6 +30,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/static/**").permitAll()
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/favicon.ico").permitAll()
                         .anyRequest().authenticated()
         ).formLogin((formLogin) -> formLogin
                 .usernameParameter("email")
