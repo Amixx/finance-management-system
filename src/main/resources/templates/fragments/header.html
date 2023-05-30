@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}"></head>
 <body>
 <div class="navbar bg-base-100">
@@ -31,6 +31,11 @@
                     <span icon-name="folder-tree"></span>
                     <span>Expense categories</span>
                 </a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign out"/>
+                </form>
             </li>
         </ul>
     </div>
